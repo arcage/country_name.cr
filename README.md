@@ -17,7 +17,7 @@ Lookups country name from ISO 3166-1(Alpha 2) country code.
 ## Usage
 
 ```crystal
-require "country_code"
+require "country_name"
 
 # Basic lookup(case insensitive)
 CountryName.from_country_code("jp") #=> "Japan"
@@ -34,7 +34,7 @@ CountryName.from_country_code("xx")
 #>> Unhandled exception: Country code "xx" not found. (CountryName::Error)
 
 # from_country_code? method returns nil when the code doesn't exist.
-CountryName.from_country_code("xx") #=> nil
+CountryName.from_country_code?("xx") #=> nil
 ```
 
 ## Supported languages
