@@ -5,7 +5,7 @@ require "yaml"
 module CountryName
   class Error < Exception; end
 
-  VERSION = "0.1.0"
+  VERSION = "0.1.1"
 
   CACHE_DIR = File.expand_path(File.dirname(File.dirname(__FILE__))) + "/cache"
 
@@ -17,7 +17,7 @@ module CountryName
     CountryName::SUPPORTED_LANG.each do |lang|
       uri = URI.parse("https://raw.githubusercontent.com/umpirsky/country-list/master/data/#{lang}/country.yaml")
       cache_file = CACHE_DIR + "/#{lang}.yaml"
-      mtime = File.exists?(cache_file) ? File.info(cache_file).modification_time : Time.new(2000, 1, 1)
+      mtime = File.exists?(cache_file) ? File.info(cache_file).modification_time : Time.utc(2000, 1, 1)
       http = HTTP::Client.new(uri)
       headers = HTTP::Headers.new
       headers["If-modified-since"] = HTTP.format_time(mtime)
